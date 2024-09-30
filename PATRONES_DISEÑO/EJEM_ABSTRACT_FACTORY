@@ -1,0 +1,47 @@
+/**
+ * Interfaz AbstractFactory que define métodos para crear productos.
+ */
+interface AbstractFactory {
+    String createProductA();
+    String createProductB();
+}
+
+/**
+ * Implementación concreta de AbstractFactory para la familia 1 de productos.
+ */
+class ConcreteFactory1 implements AbstractFactory {
+    @Override
+    public String createProductA() {
+        return "Producto A1";
+    }
+
+    @Override
+    public String createProductB() {
+        return "Producto B1";
+    }
+}
+
+/**
+ * Implementación concreta de AbstractFactory para la familia 2 de productos.
+ */
+class ConcreteFactory2 implements AbstractFactory {
+    @Override
+    public String createProductA() {
+        return "Producto A2";
+    }
+
+    @Override
+    public String createProductB() {
+        return "Producto B2";
+    }
+}
+
+// Uso
+public class Main {
+    public static void main(String[] args) {
+        AbstractFactory factory = new ConcreteFactory1();
+        String productA = factory.createProductA();
+        String productB = factory.createProductB();
+        System.out.println(productA + " " + productB);  // Salida: Producto A1 Producto B1
+    }
+}
