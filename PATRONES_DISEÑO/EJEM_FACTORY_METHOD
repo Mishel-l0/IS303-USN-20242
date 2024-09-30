@@ -1,0 +1,66 @@
+/**
+ * Interfaz Product que define el método común para productos.
+ */
+interface Product {
+    String operation();
+}
+
+/**
+ * Implementación concreta de Product.
+ */
+class ConcreteProductA implements Product {
+    @Override
+    public String operation() {
+        return "Operación de Producto A";
+    }
+}
+
+/**
+ * Implementación concreta de Product.
+ */
+class ConcreteProductB implements Product {
+    @Override
+    public String operation() {
+        return "Operación de Producto B";
+    }
+}
+
+/**
+ * Clase Creator que define el método de creación.
+ */
+abstract class Creator {
+    /**
+     * Método que crea un producto, a ser implementado por subclases.
+     * @return un objeto Product
+     */
+    public abstract Product factoryMethod();
+}
+
+/**
+ * Implementación concreta de Creator para Product A.
+ */
+class ConcreteCreatorA extends Creator {
+    @Override
+    public Product factoryMethod() {
+        return new ConcreteProductA();
+    }
+}
+
+/**
+ * Implementación concreta de Creator para Product B.
+ */
+class ConcreteCreatorB extends Creator {
+    @Override
+    public Product factoryMethod() {
+        return new ConcreteProductB();
+    }
+}
+
+// Uso
+public class Main {
+    public static void main(String[] args) {
+        Creator creator = new ConcreteCreatorA();
+        Product product = creator.factoryMethod();
+        System.out.println(product.operation());  // Salida: Operación de Producto A
+    }
+}
