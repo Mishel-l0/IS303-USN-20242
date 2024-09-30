@@ -1,0 +1,58 @@
+/**
+ * Clase Product que representa un objeto complejo que se está construyendo.
+ */
+class Product {
+    private final List<String> parts = new ArrayList<>();
+
+    /**
+     * Método para añadir partes al producto.
+     * @param part parte a añadir
+     */
+    public void add(String part) {
+        parts.add(part);
+    }
+
+    /**
+     * Método para obtener las partes del producto.
+     * @return lista de partes
+     */
+    public List<String> getParts() {
+        return parts;
+    }
+}
+
+/**
+ * Interfaz Builder que define métodos para construir un producto.
+ */
+interface Builder {
+    void buildPart();
+    Product getResult();
+}
+
+/**
+ * Implementación concreta de Builder.
+ */
+class ConcreteBuilder implements Builder {
+    private final Product product = new Product();
+
+    @Override
+    public void buildPart() {
+        product.add("Parte 1");
+        product.add("Parte 2");
+    }
+
+    @Override
+    public Product getResult() {
+        return product;
+    }
+}
+
+// Uso
+public class Main {
+    public static void main(String[] args) {
+        Builder builder = new ConcreteBuilder();
+        builder.buildPart();
+        Product product = builder.getResult();
+        System.out.println(product.getParts());  // Salida: [Parte 1, Parte 2]
+    }
+}
