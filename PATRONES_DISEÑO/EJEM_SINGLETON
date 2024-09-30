@@ -1,0 +1,23 @@
+/**
+ * Clase Singleton que asegura que solo haya una única instancia.
+ * Proporciona un punto de acceso global a esa instancia.
+ * Fuente: "Design Patterns: Elements of Reusable Object-Oriented Software" de Erich Gamma et al.
+ */
+public class Singleton {
+    // Instancia única de la clase
+    private static Singleton instance;
+
+    // Constructor privado para evitar instanciación externa
+    private Singleton() {}
+
+    /**
+     * Método que devuelve la instancia única de la clase.
+     * @return instancia del Singleton
+     */
+    public static Singleton getInstance() {
+        if (instance == null) {
+            instance = new Singleton();
+        }
+        return instance;
+    }
+}
